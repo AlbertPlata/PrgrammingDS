@@ -1,2 +1,2 @@
 # PrgrammingDS
-This repo contents all practiques of the course
+This repo contains all practiques of the course

@@ -44,7 +44,7 @@ library(RMySQL)
 
 con <- dbConnect(MySQL(), 
                  user = 'root',
-                 password = 'n0m3l0',
+                 password = '',
                  host = 'localhost',
                  dbname = 'nba')
 query <- "SELECT Asistencias_por_partido FROM nba.estadisticas where temporada = '00/01';"
@@ -52,7 +52,7 @@ temp_01 <- dbGetQuery(con, query)
 query <- "SELECT Asistencias_por_partido FROM nba.estadisticas where temporada = '01/02'LIMIT 128;"
 temp_02 <- dbGetQuery(con, query)
 t.test(temp_01$Asistencias_por_partido, temp_02$Asistencias_por_partido, paired = TRUE, conf.level = .95)
-message("La temporada 1 tuvo un mejor desempeño")
+message("La temporada 1 tuvo un mejor desempeÃ±o")
 #------------------------------------Punto 5------------------------------------
 library(PerformanceAnalytics)
 
@@ -67,12 +67,12 @@ linear <- function(con,rec,vel,lit){
   abline(lmFirstPair)
 }
 linear(consumo,recorridos,velocidad,litros)
-#¿Cuál sería el consumo promedio para un recorrido de 110km, 150km y 300 km?
+#Â¿CuÃ¡l serÃ­a el consumo promedio para un recorrido de 110km, 150km y 300 km?
 predict(lm(litros~consumo), consumo = 110)
 predict(lm(litros~consumo), consumo = 150)
 predict(lm(litros~consumo), consumo = 300)
-#Utilice el coeficiente de determinación para otorgar una observación del patrón
-#de comportamiento de los datos a través de su correlación
+#Utilice el coeficiente de determinaciÃ³n para otorgar una observaciÃ³n del patrÃ³n
+#de comportamiento de los datos a travÃ©s de su correlaciÃ³n
 cor(consumo,recorridos)
 cor(consumo, velocidad)
 cor(consumo,litros)
@@ -80,7 +80,7 @@ message("Como se puede observar en relacion con la variable consumo, no ay una c
 
 cor(recorridos,velocidad)
 cor(recorridos,litros)
-message("Como podemos ver la corelacion más significativa se encuentra entre recorridos y velocidad")
+message("Como podemos ver la corelacion mÃ¡s significativa se encuentra entre recorridos y velocidad")
 
 cor(litros,velocidad)
 message("Esta ultima correlacion tambien tiene un relacion muy significativa")
@@ -88,22 +88,22 @@ message("Esta ultima correlacion tambien tiene un relacion muy significativa")
 
 #------------------------------------Punto 6------------------------------------
 #101 A 99 B 17 muestras azar
-#¿Cuál es la probabilidad de que todas las muestras tomadas sean del proveedor A?
+#Â¿CuÃ¡l es la probabilidad de que todas las muestras tomadas sean del proveedor A?
 dhyper(x=17, m=101, n=99, k=17)
-#¿Cuál es la probabilidad de que 15 o más provengan del proveedor B?
+#Â¿CuÃ¡l es la probabilidad de que 15 o mÃ¡s provengan del proveedor B?
 sum(dhyper(x=15:17, m=101, n=99, k=17))
-#¿Qué cantidad requiero tomar si busco que el 70% de muestras provengan del proveedor A?
+#Â¿QuÃ© cantidad requiero tomar si busco que el 70% de muestras provengan del proveedor A?
 qhyper(p=c(0.7),m=101, n=99, k=17)
-#Calcule la probabilidad de que como máximo se encuentren 7 acelerómetros del proveedor B.
+#Calcule la probabilidad de que como mÃ¡ximo se encuentren 7 acelerÃ³metros del proveedor B.
 phyper(q=7, m=101, n=99, k=17)
 #------------------------------------Punto 7------------------------------------
 #sobre peso h > m
 # promedio_h = 90 kg s^2 = 16 kg
 # promedio_m = 80 kg s^2 = 25 kg
-#¿Cuál es la probabilidad de que una amiga tuya en ese país tenga un peso igual o mayor a 85 kg?
+#Â¿CuÃ¡l es la probabilidad de que una amiga tuya en ese paÃ­s tenga un peso igual o mayor a 85 kg?
 #P(x>=85) = 1 - P(x<85)
 1-pnorm(85, mean=80, sd=25)
-#¿Cuál es el peso de un hombre de ese país que se encuentra en el percentil 45?
+#Â¿CuÃ¡l es el peso de un hombre de ese paÃ­s que se encuentra en el percentil 45?
 qnorm(0.45, mean=90, sd=16)
 #------------------------------------Punto 8------------------------------------
 mPoi <- rpois(1000, lambda = 3)
